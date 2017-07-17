@@ -30,12 +30,12 @@ namespace SnippetApp.Controllers
 
             if (!String.IsNullOrEmpty(descriptionSearch))
             {
-                snippets = snippets.Where(snippet => snippet.Description.Contains(descriptionSearch));
+                snippets = snippets.Where(snippet => snippet.Description.ToLower().Contains(descriptionSearch.ToLower()));
             }
 
             if (!String.IsNullOrEmpty(languageSearch))
             {
-                snippets = snippets.Where(snippet => snippet.Language.Contains(languageSearch));
+                snippets = snippets.Where(snippet => snippet.Language.ToLower().Contains(languageSearch.ToLower()));
             }
 
             return View(await snippets.ToListAsync());
